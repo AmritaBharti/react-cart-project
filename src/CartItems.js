@@ -19,6 +19,36 @@ class CartItem extends React.Component {
        console.log('this.state',this.state) // when we attach event listener we are passing a reference to our increaseQunatity function and when it internally calls it the value of this get lost -> we can solve this by binding -> binding .bind()
         // another way is we can bind this in constructor function
         //or we can use arrow function it will automatically bind the value of this
+        
+        //this.state.qty +=1; // it will incr object qty but it will not shown in ui -> to show in ui -> we have to incr qty in state not only on object and re-render it
+        //by using set state function two way to do it
+
+        // //set state form 1 -> we will give an object
+        // this.setState(  // this set state function call will triger re-render of the component with update value 
+        //     {
+        //         qty:this.state.qty + 1  // shallow merging -> it will not tough other property
+        //     },() =>{} call function as second argument
+        // ) ; //it is getting inherited from component class in react
+        
+        //// set state form 2 -> we will pass call back function -> we can use when we reruire previous state too
+        this.setState((prevState)=>{
+            return {
+                qty :prevState.qty + 1
+            }
+        });  //it is getting inherited from component class in react
+    }
+
+    decreaseQunatity=()=>{
+        const {qty}= this.state
+        if(qty == 0){
+            return;
+         }
+        this.setState((prevState)=>{
+                return {
+                    qty : prevState.qty - 1
+                }
+
+        });  
     }
 
     //for a class component to be a react component we need to give render method and that render method will return JSX which will describe the ui for the component
@@ -47,6 +77,7 @@ class CartItem extends React.Component {
                             alt="decrease"
                             className="action-icons"
                             src="https://as1.ftcdn.net/v2/jpg/03/73/49/86/1000_F_373498649_nBxauQ0ipBSVrVcMpWWVmTpXu3BLvRyY.jpg"
+                            onClick={this.decreaseQunatity}
                         />
                         <img
                             alt="delete"
