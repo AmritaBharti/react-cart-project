@@ -54,7 +54,7 @@ class CartItem extends React.Component {
     //for a class component to be a react component we need to give render method and that render method will return JSX which will describe the ui for the component
     render() {
         const { price, title, qty } = this.props.product; // distructure the object
-        const {product, onIncreaseQuantity,onDecreaseQuantity} = this.props;
+        const {product, onIncreaseQuantity,onDecreaseQuantity,onDeleteProduct} = this.props;
         return (
 
             <div className="cart-item">
@@ -84,6 +84,7 @@ class CartItem extends React.Component {
                             alt="delete"
                             className="action-icons"
                             src="https://as2.ftcdn.net/v2/jpg/00/98/26/11/1000_F_98261175_Sv69O3rZsHApYkjAdrWbgQixYHwyZyOr.jpg"
+                            onClick={()=>onDeleteProduct(product.id) }
                         />
                     </div>
 
