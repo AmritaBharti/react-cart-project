@@ -1,7 +1,7 @@
 import React from "react";
 
 //class component -> we are inheriting using extends keywords from the class called component inside the react package
-class CartItem extends React.Component {
+const CartItem = (props) => {
     // // we will define here state to this component -> it is just way to store local data for the component -> it is just plain js object
     // //by defining constructore we can add state to the component
     // constructor() {
@@ -52,9 +52,9 @@ class CartItem extends React.Component {
     // }
 
     //for a class component to be a react component we need to give render method and that render method will return JSX which will describe the ui for the component
-    render() {
-        const { price, title, qty } = this.props.product; // distructure the object
-        const {product, onIncreaseQuantity,onDecreaseQuantity,onDeleteProduct} = this.props;
+ 
+        const { price, title, qty } = props.product; // distructure the object
+        const {product, onIncreaseQuantity,onDecreaseQuantity,onDeleteProduct} = props;
         return (
 
             <div className="cart-item">
@@ -92,7 +92,7 @@ class CartItem extends React.Component {
 
             </div>
         );
-    }
+    
 
 }
 
