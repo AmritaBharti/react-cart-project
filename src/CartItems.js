@@ -2,18 +2,18 @@ import React from "react";
 
 //class component -> we are inheriting using extends keywords from the class called component inside the react package
 class CartItem extends React.Component {
-    // we will define here state to this component -> it is just way to store local data for the component -> it is just plain js object
-    //by defining constructore we can add state to the component
-    constructor() {
-        super(); // to call constructor of the parent class because here we have inherited the React.Compoenet
-        this.state = {
-            price: 999,
-            title: 'Phone',
-            qty: 1,
-            img: ''
-        }
-        //this.increaseQunatity = this.increaseQunatity.bind(this);
-    }
+    // // we will define here state to this component -> it is just way to store local data for the component -> it is just plain js object
+    // //by defining constructore we can add state to the component
+    // constructor() {
+    //     super(); // to call constructor of the parent class because here we have inherited the React.Compoenet
+    //     this.state = {
+    //         price: 999,
+    //         title: 'Phone',
+    //         qty: 1,
+    //         img: ''
+    //     }
+    //     //this.increaseQunatity = this.increaseQunatity.bind(this);
+    // }
 
     increaseQunatity=()=>{
        console.log('this.state',this.state) // when we attach event listener we are passing a reference to our increaseQunatity function and when it internally calls it the value of this get lost -> we can solve this by binding -> binding .bind()
@@ -53,7 +53,7 @@ class CartItem extends React.Component {
 
     //for a class component to be a react component we need to give render method and that render method will return JSX which will describe the ui for the component
     render() {
-        const { price, title, qty } = this.state; // distructure the object
+        const { price, title, qty } = this.props.product; // distructure the object
         return (
 
             <div className="cart-item">
